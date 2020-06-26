@@ -133,12 +133,13 @@ $error = false;
                 <?php
                     $array = array('Fond', 'Droite', 'Gauche');
                 
-                foreach($array as $arraypos){
-                    echo '<option value="'.$arraypos.'"' .$select. '>'.$arraypos.'</option>', "\n";
-
-                    if($position == $array)
+                foreach($array as $arraypos){ 
+                    $select = '';                   
+                    if($position == $arraypos){
                     $select = "selected";
                     }
+                    echo '<option value="'.$arraypos.'"' .$select. '>'.$arraypos.'</option>';
+                }
                 ?>
                     </select>            
             </div>
