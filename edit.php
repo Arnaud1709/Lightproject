@@ -76,7 +76,7 @@ $error = false;
     
 
         $sth = $dbh->prepare($sql);
-
+            //Protection des requêtes sql
         $sth->bindValue(':date', strftime("%Y-%m-%d", strtotime($date)), PDO::PARAM_STR);
         $sth->bindParam(':etage', $etage, PDO::PARAM_STR);
         $sth->bindParam(':position', $position, PDO::PARAM_STR);
@@ -88,32 +88,43 @@ $error = false;
         $sth->execute();
 
         header('Location: index.php');
-        }
     }
+}
     ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit</title>
+    <?php
+        if( isset($_GET['id']) && isset($_GET['edit'])){
+            echo'<title>Modifier des informations</title>';
+        }else{
+            echo'<title>Ajouter un changement</title>';
+        }
+    ?>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <?php
         if( isset($_GET['id']) && isset($_GET['edit'])){
-            echo'<h1>Modifier des informations</h1>';
+            echo'<h1 class="titre">Modifier des informations</h1>';
         }else{
-            echo'<h1>Ajouter une ampoule</h1>';
+            echo'<h1 class="titre">Ajouter une ampoule</h1>';
         }
     ?>
     <div>
-        <form action="" method="post">
+        <form action="" method="post" class="uk-form-horizontal uk-margin-auto-left uk-margin-auto-right uk-margin-xlarge-top uk-width-1-2 uk-margin">
             <div>
-                <input type="date" name="date" placeholder="Date du changement" value="<?=$date; ?>">
+                <input type="date" name="date" placeholder="Date du changement" value="<?=$date; ?>" class="uk-input">
             </div>
             <div>
-                <select name="etage" id="etage">   
+                <select name="etage" id="etage" class="uk-select">   
                 <?php 
                     for($i=0; $i<12; $i++){
                         $selected = '';
@@ -129,25 +140,25 @@ $error = false;
                     </select>  
             </div>
             <div>
-                <select name="position">
+                <select name="position" class="uk-select">
                 <?php
                     $array = array('Fond', 'Droite', 'Gauche');
                 
-                foreach($array as $arraypos){ 
-                    $select = '';                   
-                    if($position == $arraypos){
-                    $select = "selected";
+                    foreach($array as $arraypos){ 
+                        $select = '';                   
+                        if($position == $arraypos){
+                        $select = "selected";
+                        }
+                        echo '<option value="'.$arraypos.'"' .$select. '>'.$arraypos.'</option>';
                     }
-                    echo '<option value="'.$arraypos.'"' .$select. '>'.$arraypos.'</option>';
-                }
                 ?>
-                    </select>            
+                </select>            
             </div>
             <div>
-                <input type="text" name="puissance" placeholder="Puissance" value="<?=$puissance?>">            
+                <input type="text" name="puissance" placeholder="Puissance" value="<?=$puissance?>"  class="uk-input">            
             </div>
             <div>
-                <input type="text" name="marque" placeholder="Marque" value="<?=$marque?>">
+                <input type="text" name="marque" placeholder="Marque" value="<?=$marque?>" class="uk-input">
             </div>
 
             <?php
@@ -158,8 +169,8 @@ $error = false;
                 }
             ?>
 
-            <div>
-                <button type="submit"><?=$texteButton ?></button>
+            <div class="uk-margin">
+                <button class="uk-button uk-button-default uk-margin-auto-left uk-margin-auto-right" type="submit"><?=$texteButton ?></button>
             </div>
 
             <?php 
