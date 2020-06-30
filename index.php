@@ -21,6 +21,7 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
     <div class="color">
@@ -96,7 +97,7 @@
                     echo'<td>'.$data['position'].'</td>';
                     echo'<td>'.$data['puissance'].'</td>';
                     echo'<td>'.$data['marque'].'</td>';
-                    echo'<td><a class="modif" uk-icon="file-edit" title="Modifier" href="edit.php?edit=1&id='.$data['id'].'"></a> <a class="delet" uk-icon="trash" title="Supprimer" href="delete.php?id='.$data['id'].'"></a></td>';
+                    echo'<td><a class="modif" uk-icon="file-edit" title="Modifier" href="edit.php?edit=1&id='.$data['id'].'"></a> <a class="delet" uk-icon="trash" title="Supprimer" uk-toggle="target: #modal" onclick="confirmation('.$data['id'].')" href="delete.php?id='.$data['id'].'"></a></td>';
                 echo'</tbody>';
             }
         }else{
@@ -109,7 +110,7 @@
                         echo'<td>'.$data['position'].'</td>';
                         echo'<td>'.$data['puissance'].'</td>';
                         echo'<td>'.$data['marque'].'</td>';
-                        echo'<td><a class="modif" title="Modifier" uk-icon="file-edit" href="edit.php?edit=1&id='.$data['id'].'"></a> <a class="delet" uk-icon="trash" title="Supprimer" href="delete.php?id='.$data['id'].'"></a></td>';
+                        echo'<td><a class="modif" title="Modifier" uk-icon="file-edit" href="edit.php?edit=1&id='.$data['id'].'"></a> <a class="delet" uk-icon="trash" title="Supprimer" uk-toggle="target: #modal" onclick="confirmation('.$data['id'].')" href="delete.php?id='.$data['id'].'"></a></td>';
                     echo'</tbody>';
                     $test = 0;
                 }
@@ -121,8 +122,17 @@
             if(count($datas) === 0){
                 echo'<p class="null"> Ancun changement</p>';
             }
-        ?>   
+        ?>
+        <div id="modal" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <p>Êtes-vous sur de vouloir supprimer cette ligne?</p>
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default" id="confirmation" onclick="trash()" type="button" href="delete.php">Oui</button>
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Non</button>
+        </p>
     </div>
-    
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 
     require_once('db.php');
 
+
     $utilisateur = '';
     $mdp = '';
     $msg= '';
@@ -58,14 +59,7 @@
             </div>
 
             <nav class="user">
-                <p class="session">
-                    <span>
-                        <?php                
-                            echo 'Bonjour ' .$_SESSION['utilisateur'].' !'
-                        ?>
-                    </span>
-                    <a title="Au revoir <?= $_SESSION['utilisateur']?> !" uk-icon="sign-out" class="delet" href="deconnexion.php"></a>
-                </p>
+                
             </nav>
         </div>
     </header>
