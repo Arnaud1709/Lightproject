@@ -45,9 +45,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Fontdiner+Swanky&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    
-    <h1 class="titre">Connexion</h1>
+<body>   
+    <header>
+        <div class="titre">            
+            <h1 class="idea">
+                <img class="logo" src="getsupercustomizedimage.png">
+                GOOD IDEA
+            </h1>
+
+            <div class="page">
+                <h1 class="localisation">Connexion</h1>
+            </div>
+
+            <nav class="user">
+                <p class="session">
+                    <span>
+                        <?php                
+                            echo 'Bonjour ' .$_SESSION['utilisateur'].' !'
+                        ?>
+                    </span>
+                    <a title="Au revoir <?= $_SESSION['utilisateur']?> !" uk-icon="sign-out" class="delet" href="deconnexion.php"></a>
+                </p>
+            </nav>
+        </div>
+    </header>
     <div class="uk-form-horizontal uk-margin-auto-left uk-margin-auto-right uk-margin-xlarge-top uk-width-1-2 uk-margin">
         <form action="login.php" method="POST">
             

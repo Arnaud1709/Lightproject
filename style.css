@@ -6,8 +6,6 @@ body{
 }
 
 .titre{
-
-    /*font-family: 'Fontdiner Swanky', cursive;*/
     display: flex;
     background-color: white;
     border-radius: 0px 0px 30px 30px;
@@ -16,7 +14,18 @@ body{
     justify-content: space-between;
     height: 10vh;
     vertical-align: middle;
+    margin-bottom: 1%;
 }
+
+
+ .page{
+    margin: auto;
+ }
+
+ .localisation{
+    font-family: 'Fontdiner Swanky', cursive;
+    font-size: 42px;
+ }
 
 .user{
     display: flex;
@@ -25,13 +34,31 @@ body{
     vertical-align: middle;
 }
 
+.session{
+    margin: auto;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    width: 19%;
+    justify-content: space-between;
+    margin-left: 10%;
+    height: 5vh;
+    border-radius: 30px;
+    padding: 1vw;
+    padding-top: 1vh;
+}
+
 h1.idea{
-    background-color: #29D9C2;
+    background-color: orange;
     border-radius: 0px 30px 30px 30px;
     width: 20%;
     height: 8vh;
     font-family: 'Fontdiner Swanky', cursive;
-    text-shadow: 0px 0px 9px yellow;
+    text-shadow: 0px 0px 12px yellow;
     text-align: center;
     padding-top: 20px;
 }
@@ -43,6 +70,15 @@ h1.idea{
 
 .ajout{
     margin-left: 12.5%;
+}
+
+.uk-search{
+    flex-direction: row;
+    padding: 1.5vh;
+}
+
+.uk-link-reset{
+    padding: 1.5vh;
 }
 
 .uk-table{
@@ -58,6 +94,18 @@ h1.idea{
 .modif{
     margin-left: 10%;
     margin-right: 10%;
+    color: #666;
+}
+
+.delet{
+    color: #666;
+}
+.modif:hover{
+    color: #666;
+}
+
+.delet:hover{
+    color: #666;
 }
 
 .uk-button{

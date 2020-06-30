@@ -30,28 +30,37 @@
                 <img class="logo" src="getsupercustomizedimage.png">
                 GOOD IDEA
             </h1>
+
+            <div class="page">
+                <h1 class="localisation">Index</h1>
+            </div>
+
             <nav class="user">
-                <span>
-                <?php                
-                  echo 'Bonjour, ' .$_SESSION['utilisateur'].' !'
-                ?>
-                </span>
-                <p>
-                <a uk-icon="sign-out" href="deconnexion.php"></a>
+                <p class="session">
+                    <span>
+                        <?php                
+                            echo 'Bonjour ' .$_SESSION['utilisateur'].' !'
+                        ?>
+                    </span>
+                    <a title="Au revoir <?= $_SESSION['utilisateur']?> !" uk-icon="sign-out" class="delet" href="deconnexion.php"></a>
                 </p>
             </nav>
         </div>
-
     </header>
-        <div class="nav">
-            <form action="" method="post" class="uk-search uk-search-default">
-                <input class="uk-search-input" name="rechercher" type="text" class="search-query" placeholder="Chercher une ampoule">
-                <button type="submit" class=""><i class="uk-search-icon-flip" uk-search-icon>></i></button>
-            </form>
-            <a href="edit.php" class="link-btn">
+
+        <div class="nav uk-background-muted">
+            <div>
+                <form action="" method="post" class="uk-search">
+                    <div class="uk-flex-row">
+                        <input class="uk-search-input uk-search-default" name="rechercher" type="text" class="search-query" placeholder="Chercher une ampoule">
+                        <button type="submit" class=""><i uk-icon="search"></i></button>
+                    </div>
+                </form>
+            </div>
+            <a href="edit.php" title="Ajouter une ampoule" class="uk-link-reset">
                 <i uk-icon="push"></i>
             </a>
-            <a href="index.php" class="link-btn">
+            <a href="index.php" title="Revenir à l'index" class="uk-link-reset">
                 <i uk-icon="refresh"></i>
             </a>
         </div>
@@ -87,7 +96,7 @@
                     echo'<td>'.$data['position'].'</td>';
                     echo'<td>'.$data['puissance'].'</td>';
                     echo'<td>'.$data['marque'].'</td>';
-                    echo'<td><a class="modif" uk-icon="file-edit" href="edit.php?edit=1&id='.$data['id'].'"></a> <a uk-icon="trash" href="delete.php?id='.$data['id'].'"></a></td>';
+                    echo'<td><a class="modif" uk-icon="file-edit" title="Modifier" href="edit.php?edit=1&id='.$data['id'].'"></a> <a class="delet" uk-icon="trash" title="Supprimer" href="delete.php?id='.$data['id'].'"></a></td>';
                 echo'</tbody>';
             }
         }else{
@@ -100,7 +109,7 @@
                         echo'<td>'.$data['position'].'</td>';
                         echo'<td>'.$data['puissance'].'</td>';
                         echo'<td>'.$data['marque'].'</td>';
-                        echo'<td><a class="modif" uk-icon="file-edit" href="edit.php?edit=1&id='.$data['id'].'"></a> <a uk-icon="trash" href="delete.php?id='.$data['id'].'"></a></td>';
+                        echo'<td><a class="modif" title="Modifier" uk-icon="file-edit" href="edit.php?edit=1&id='.$data['id'].'"></a> <a class="delet" uk-icon="trash" title="Supprimer" href="delete.php?id='.$data['id'].'"></a></td>';
                     echo'</tbody>';
                     $test = 0;
                 }
