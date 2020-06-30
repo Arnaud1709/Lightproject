@@ -1,6 +1,13 @@
 <?php
-        require_once('db.php');
-?>
+    session_start();
+    require_once('db.php');
+    
+    if(empty($_SESSION['utilisateur'])){
+        header('Location: login.php');
+    }    
+
+
+    ?>
 <?php
 $date = '';
 $etage = '';    
@@ -155,7 +162,18 @@ $error = false;
                 </select>            
             </div>
             <div>
-                <input type="text" name="puissance" placeholder="Puissance" value="<?=$puissance?>"  class="uk-input">            
+                <select name="puissance" class="uk-select">
+                <?php
+                    $array = array('25W', '60W', '75W', '100W', '150W');
+                
+                    foreach($array as $arraylight){ 
+                        $select = '';                   
+                        if($puissance == $arraylight){
+                        $select = "selected";
+                        }
+                        echo '<option value="'.$arraylight.'"' .$select. '>'.$arraylight.'</option>';
+                    }
+                ?>            
             </div>
             <div>
                 <input type="text" name="marque" placeholder="Marque" value="<?=$marque?>" class="uk-input">

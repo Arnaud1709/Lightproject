@@ -1,34 +1,48 @@
 body{
     /*background-image: linear-gradient(180deg, rgba(177,209,250,1) 0%, rgba(208,233,232,1) 83%, rgba(255,255,255,1) 100%);*/
-    background-image: linear-gradient(180deg, rgba(200,200,200,1) 0%, rgba(237,237,237,1) 76%, rgba(255,255,255,1) 100%);
+    background-image: linear-gradient(180deg, rgba(200,200,200,1) 0%, rgba(237,237,237,1) 55%, rgba(255,255,255,1) 100%);
     width: 100%;
-    height: 100vh;
-    padding-top: 2%;
+    height: 98vh;
 }
 
 .titre{
+
+    /*font-family: 'Fontdiner Swanky', cursive;*/
     display: flex;
-    justify-content: center;
-    font-family: 'Fontdiner Swanky', cursive;
-    width: 35%;
-    margin: auto;
     background-color: white;
-    border-radius: 30px;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    border-radius: 0px 0px 30px 30px;
+    font-size: 16px;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 10vh;
+    vertical-align: middle;
+}
+
+.user{
+    display: flex;
+    width: 20%;
+    flex-direction: row;
+    vertical-align: middle;
 }
 
 h1.idea{
+    background-color: #29D9C2;
+    border-radius: 0px 30px 30px 30px;
+    width: 20%;
+    height: 8vh;
     font-family: 'Fontdiner Swanky', cursive;
-    margin-block-end: 0;
-    margin-block-start: 10px;
     text-shadow: 0px 0px 9px yellow;
-    
+    text-align: center;
+    padding-top: 20px;
 }
 
 .logo{
     height: 50px;
     padding-bottom: 10px;
+}
+
+.ajout{
+    margin-left: 12.5%;
 }
 
 .uk-table{
@@ -47,7 +61,6 @@ h1.idea{
 }
 
 .uk-button{
-    margin-left: 12.5%;
     box-shadow: 2px 2px 2px #D2D2D2;
     background-color: white;
 }
@@ -60,3 +73,6 @@ h1.idea{
     width: 50%;
 }
 
+ .uk-input{
+     margin-bottom: 1%;
+ }

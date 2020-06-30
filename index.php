@@ -1,7 +1,15 @@
 <?php
-        require_once('db.php');
-    ?>
+    session_start();
+    require_once('db.php');
+    
+    if(empty($_SESSION['utilisateur'])){
+        header('Location: login.php');
+    }    
 
+
+    ?>
+	
+    
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,15 +24,37 @@
 </head>
 <body>
     <div class="color">
-
+    <header>
         <div class="titre">            
             <h1 class="idea">
-            <img class="logo" src="getsupercustomizedimage.png">
+                <img class="logo" src="getsupercustomizedimage.png">
                 GOOD IDEA
             </h1>
+            <nav class="user">
+                <span>
+                <?php                
+                  echo 'Bonjour, ' .$_SESSION['utilisateur'].' !'
+                ?>
+                </span>
+                <p>
+                <a uk-icon="sign-out" href="deconnexion.php"></a>
+                </p>
+            </nav>
         </div>
 
-        <p><a class="uk-button uk-button-default" href="edit.php"> Ajouter </a></p>
+    </header>
+        <div class="nav">
+            <form action="" method="post" class="uk-search uk-search-default">
+                <input class="uk-search-input" name="rechercher" type="text" class="search-query" placeholder="Chercher une ampoule">
+                <button type="submit" class=""><i class="uk-search-icon-flip" uk-search-icon>></i></button>
+            </form>
+            <a href="edit.php" class="link-btn">
+                <i uk-icon="push"></i>
+            </a>
+            <a href="index.php" class="link-btn">
+                <i uk-icon="refresh"></i>
+            </a>
+        </div>
 
         <table class="uk-table uk-table-striped uk-table-responsive uk-table-hover">
             <thead class="tableau">
@@ -48,6 +78,7 @@
             
         $intlDateFormatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::SHORT, IntlDateFormatter::NONE);
         
+        if(!isset($_POST['rechercher'])){
             foreach( $datas as $data){
                 echo'<tbody>';
                     echo'<td>'.$data['id'].'</td>';
@@ -59,6 +90,22 @@
                     echo'<td><a class="modif" uk-icon="file-edit" href="edit.php?edit=1&id='.$data['id'].'"></a> <a uk-icon="trash" href="delete.php?id='.$data['id'].'"></a></td>';
                 echo'</tbody>';
             }
+        }else{
+            foreach( $datas as $data){
+                if(($data['id'] == $_POST['rechercher']) || ($data['date_changement'] == $_POST['rechercher']) || $data['etage'] == $_POST['rechercher'] || $data['position'] == $_POST['rechercher'] || $data['puissance'] == $_POST['rechercher'] || $data['marque'] == $_POST['rechercher']){
+                    echo'<tbody>';
+                        echo'<td>'.$data['id'].'</td>';
+                        echo'<td>'.$intlDateFormatter->format(strtotime($data['date_changement'])).'</td>';
+                        echo'<td>'.$data['etage'].'</td>';
+                        echo'<td>'.$data['position'].'</td>';
+                        echo'<td>'.$data['puissance'].'</td>';
+                        echo'<td>'.$data['marque'].'</td>';
+                        echo'<td><a class="modif" uk-icon="file-edit" href="edit.php?edit=1&id='.$data['id'].'"></a> <a uk-icon="trash" href="delete.php?id='.$data['id'].'"></a></td>';
+                    echo'</tbody>';
+                    $test = 0;
+                }
+            }
+        }
             ?>
         </table>
         <?php        
