@@ -5,7 +5,12 @@
     if(empty($_SESSION['utilisateur'])){
         header('Location: login.php');
     }    
-
+    
+    if( isset($_GET['id']) && isset($_GET['edit'])){
+            $titre='Modifier des informations';
+        }else{
+            $titre='Ajouter un changement';
+        }
 
     ?>
 <?php
@@ -103,13 +108,7 @@ $error = false;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php
-        if( isset($_GET['id']) && isset($_GET['edit'])){
-            echo'<title>Modifier des informations</title>';
-        }else{
-            echo'<title>Ajouter un changement</title>';
-        }
-    ?>
+    <title>$titre</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
@@ -117,36 +116,9 @@ $error = false;
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-        <div class="titre">            
-            <h1 class="idea">
-                <img class="logo" src="getsupercustomizedimage.png">
-                GOOD IDEA
-            </h1>
-
-            <div class="page">
-                <?php
-                    if( isset($_GET['id']) && isset($_GET['edit'])){
-                        echo'<h1 class="localisation">Modifier des informations</h1>';
-                    }else{
-                        echo'<h1 class="localisation">Ajouter une ampoule</h1>';
-                    }
-                ?>
-            </div>
-
-            <nav class="user">
-                <p class="session">
-                    <span>
-                        <?php                
-                            echo 'Bonjour ' .$_SESSION['utilisateur'].' !'
-                        ?>
-                    </span>
-                    <a title="Au revoir <?= $_SESSION['utilisateur']?> !" uk-icon="sign-out" class="delet" href="deconnexion.php"></a>
-                </p>
-            </nav>
-        </div>
-    </header>
     
+<?php require_once('header.php'); ?>
+
     <div>
         <form action="" method="post" class="uk-form-horizontal uk-margin-auto-left uk-margin-auto-right uk-margin-xlarge-top uk-width-1-2 uk-margin">
             <div>

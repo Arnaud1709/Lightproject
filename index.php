@@ -1,11 +1,12 @@
 <?php
+//Ouverture de session et vérification de l'utilisateur
     session_start();
     require_once('db.php');
     
     if(empty($_SESSION['utilisateur'])){
         header('Location: login.php');
     }    
-
+    $titre='Index';
 
     ?>
 	
@@ -15,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>index</title>   
+    <title><?=$titre?></title>  
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/js/uikit-icons.min.js"></script>
@@ -23,31 +24,11 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
+
+<?php require_once('header.php'); ?>
+
 <body>
     <div class="color">
-    <header>
-        <div class="titre">            
-            <h1 class="idea">
-                <img class="logo" src="getsupercustomizedimage.png">
-                GOOD IDEA
-            </h1>
-
-            <div class="page">
-                <h1 class="localisation">Index</h1>
-            </div>
-
-            <nav class="user">
-                <p class="session">
-                    <span>
-                        <?php                
-                            echo 'Bonjour ' .$_SESSION['utilisateur'].' !'
-                        ?>
-                    </span>
-                    <a title="Au revoir <?= $_SESSION['utilisateur']?> !" uk-icon="sign-out" class="delet" href="deconnexion.php"></a>
-                </p>
-            </nav>
-        </div>
-    </header>
 
         <div class="nav uk-background-muted">
             <div>
@@ -124,14 +105,16 @@
             }
         ?>
         <div id="modal" uk-modal>
-    <div class="uk-modal-dialog uk-modal-body">
-        <p>Êtes-vous sur de vouloir supprimer cette ligne?</p>
-        <p class="uk-text-right">
-            <button class="uk-button uk-button-default" id="confirmation" onclick="trash()" type="button" href="delete.php">Oui</button>
-            <button class="uk-button uk-button-default uk-modal-close" type="button">Non</button>
-        </p>
-    </div>
+            <div class="uk-modal-dialog uk-modal-body">
+                <h1>Suppression</h1>
+                <p>Êtes-vous sur de vouloir supprimer cette ligne?</p>
+                <p class="uk-text-center">
+                    <button class="uk-button uk-button-default" id="confirmation" onclick="trash()" type="button" href="delete.php">Oui</button>
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">Non</button>
+                </p>
+            </div>
         </div>
+
     </div>
     <script src="script.js"></script>
 </body>

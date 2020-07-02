@@ -5,7 +5,6 @@
 
     $utilisateur = '';
     $mdp = '';
-    $msg= '';
 
 
     if(isset($_POST['connexion']) && !empty($_POST['utilisateur']) && !empty($_POST['mot_de_passe'])){   
@@ -21,12 +20,15 @@
     session_start();
     
         if($_POST['utilisateur'] == $utilisateur && $_POST['mot_de_passe'] == $mdp){
-            $_SESSION['valid'] = true;
             $_SESSION['timeout'] = time();
             $_SESSION['utilisateur'] = $utilisateur;
             header('Location: index.php');
-        }else{
-            $msg = "Mauvais indentifiant ou mot de passe!";
+        }else{            
+            echo'<div class="uk-alert-danger uk-overlay uk-position-cover uk-position-top" uk-alert>
+                <a class="uk-alert-close" uk-close></a>
+                <h3>ATTENTION!</h3>
+                <p>Mauvais indentifiant ou mot de passe!</p>
+            </div>';
         }
     }
     ?>
