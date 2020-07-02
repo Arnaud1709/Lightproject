@@ -25,14 +25,14 @@
             </nav>
         </div>
     </header>
-    
-    <div id="deco" uk-modal>
-        <div class="uk-modal-dialog uk-modal-body ">
-            <h1>Déconnexion</h1>
+    <!-- Modal de déconnexion-->
+    <div id="deco" uk-modal >
+        <div class="uk-modal-dialog uk-modal-body uk-text-center">
+            <h1 class="warning">Déconnexion</h1>
             <p>Êtes-vous sur de vouloir vous déconnecter?</p>
             <p class="uk-text-center">
-                <button class="uk-button uk-button-default" id="validation" onclick="deco()" type="button" href="deconnexion.php">Oui</button>
-                <button class="uk-button uk-button-default uk-modal-close" type="button">Non</button>
+                <button class="uk-button uk-button-default yes" id="validation" onclick="deco()" type="button" href="deconnexion.php">Oui</button>
+                <button class="uk-button uk-button-default uk-modal-close nope" type="button">Non</button>
             </p>
          </div>
     </div>

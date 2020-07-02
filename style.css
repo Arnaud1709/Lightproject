@@ -1,5 +1,4 @@
 body{
-    /*background-image: linear-gradient(180deg, rgba(177,209,250,1) 0%, rgba(208,233,232,1) 83%, rgba(255,255,255,1) 100%);*/
     background-image: linear-gradient(180deg, rgba(200,200,200,1) 0%, rgba(237,237,237,1) 55%, rgba(255,255,255,1) 100%);
     width: 100%;
     height: 98vh;
@@ -73,6 +72,22 @@ h1.idea{
 
 .ajout{
     margin-left: 12.5%;
+}
+
+
+.warning{
+    color: red;
+    font-weight: bold;
+}
+
+.yes{
+    color: #30DB41;
+    font-weight: bold;
+}
+
+.nope{
+    color: red;
+    font-weight: bold;
 }
 
 .uk-search{
