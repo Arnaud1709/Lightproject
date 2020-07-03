@@ -22,7 +22,7 @@
     // Comparaison des valeurs extraites et celle des formulaires
         if($_POST['utilisateur'] == $utilisateur && $_POST['mot_de_passe'] == $mdp){
             //Si elles sont bonne, création d'une session
-            $_SESSION['timeout'] = time();
+            $_SESSION['timeout'] = time(600);
             $_SESSION['utilisateur'] = $utilisateur;
             header('Location: index.php');
         //Si elles sont fausses, message d'erreur
@@ -42,6 +42,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="icon" type="image/png" href="getsupercustomizedimage.png" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>

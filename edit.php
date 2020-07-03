@@ -1,11 +1,13 @@
 <?php
+// Ouverture de session
     session_start();
     require_once('db.php');
     
     if(empty($_SESSION['utilisateur'])){
         header('Location: login.php');
     }    
-    
+
+    //Vérifie si on est en état d'ajout ou d'édition
     if( isset($_GET['id']) && isset($_GET['edit'])){
             $titre='Modifier des informations';
         }else{
@@ -14,6 +16,7 @@
 
     ?>
 <?php
+// Variables vide à remplir
 $date = '';
 $etage = '';    
 $position = '';
@@ -22,6 +25,7 @@ $marque = '';
 $id = '';
 $error = false;
 
+// Requête sql pour éxtraire les valrus du tableau si on est en état d'édition
     if(isset($_GET['id']) && isset($_GET['edit'])){
         $sql = 'SELECT id, date_changement, etage, position, puissance, marque FROM ampoule WHERE id=:id';
         $sth = $dbh->prepare($sql);
@@ -33,6 +37,7 @@ $error = false;
             exit;
         }
 
+    // Remplissage des variables vides
     $date = $data['date_changement'];
     $etage = $data['etage'];
     $position = $data['position'];
@@ -42,43 +47,44 @@ $error = false;
 
     }
 
+    // Vérifie si des valeurs ont bien été rentrées
     if(count($_POST) > 0 ){
-
+        // Vérifie la valeur de la date
         if(strlen(trim($_POST['date'])) !== 0){
             $date = trim($_POST['date']);
         }else{
             $error = true;
         }
-
+        // Vérifie la valeur de l'étage
         if(strlen(trim($_POST['etage'])) !== 0){
             $etage = trim($_POST['etage']);
         }else{
             $error = true;
         }
-
+        // Vérifie la valeur de la position
         if(strlen(trim($_POST['position'])) !== 0){
             $position = trim($_POST['position']);
         }else{
             $error = true;
         }
-
+        // Vérifie la valeur de la puissance
         if(strlen(trim($_POST['puissance'])) !== 0){
             $puissance = trim($_POST['puissance']);
         }else{
             $error = true;
         }
-
+        // Vérifie la valeur de la marque
         if(strlen(trim($_POST['marque'])) !== 0){
             $marque = trim($_POST['marque']);
         }else{
             $error = true;
         }
-
+        // Vérifie la valeur de l'id
         if(isset($_POST['edit']) && isset($_POST['id'])){
             $id = htmlentities($_POST['id']);
         }
 
-
+// Si il n'y a pas d'erreur de remplissage, vérifie si on est en état d'édition ou d'ajout et créé une requête sql
     if($error === false){
         if(isset($_POST['edit']) && isset($_POST['id'])){
             $sql = 'UPDATE ampoule SET date_changement=:date, etage=:etage, position=:position, puissance=:puissance, marque=:marque WHERE id=:id';
@@ -86,7 +92,7 @@ $error = false;
             $sql = "INSERT INTO ampoule(date_changement,etage,position,puissance,marque) VALUES(:date,:etage,:position,:puissance,:marque)";
         }
     
-
+// Préparation, protection et execution de la requête sql
         $sth = $dbh->prepare($sql);
             //Protection des requêtes sql
         $sth->bindValue(':date', strftime("%Y-%m-%d", strtotime($date)), PDO::PARAM_STR);
@@ -98,7 +104,7 @@ $error = false;
             $sth->bindParam('id', $id, PDO::PARAM_INT);
         }
         $sth->execute();
-
+        // Après l'exécution, redirection vers l'index
         header('Location: index.php');
     }
 }
@@ -106,6 +112,7 @@ $error = false;
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="icon" type="image/png" href="getsupercustomizedimage.png" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$titre</title>
@@ -116,20 +123,22 @@ $error = false;
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+<!-- On intègre le header -->   
 <?php require_once('header.php'); ?>
-
+    <!-- Création du formulaire --> 
     <div>
         <form action="" method="post" class="uk-form-horizontal uk-margin-auto-left uk-margin-auto-right uk-margin-xlarge-top uk-width-1-2 uk-margin">
+            <!-- Entrée de date --> 
             <div>
                 <input type="date" name="date" placeholder="Date du changement" value="<?=$date; ?>" class="uk-input">
             </div>
+            <!-- Selection de l'étage--> 
             <div>
                 <select name="etage" id="etage" class="uk-select">   
                 <?php 
                     for($i=0; $i<12; $i++){
                         $selected = '';
-
+                        // Sauvegarde l'étage si extrait pour l'édition
                         if ($etage == $i){
                             $selected = "selected";
                         }
@@ -141,12 +150,14 @@ $error = false;
                     </select>  
             </div>
             <div>
+            <!-- Selection de la position --> 
                 <select name="position" class="uk-select">
                 <?php
                     $array = array('Fond', 'Droite', 'Gauche');
                 
                     foreach($array as $arraypos){ 
-                        $select = '';                   
+                        $select = '';  
+                        // Sauvegarde la position si extrait pour l'édition                 
                         if($position == $arraypos){
                         $select = "selected";
                         }
@@ -156,12 +167,14 @@ $error = false;
                 </select>            
             </div>
             <div>
+            <!-- Sélection de la puissance --> 
                 <select name="puissance" class="uk-select">
                 <?php
                     $array = array('25W', '60W', '75W', '100W', '150W');
                 
                     foreach($array as $arraylight){ 
-                        $select = '';                   
+                        $select = '';    
+                        // Sauvegarde de la puissance sélectionnée en cas d'édition               
                         if($puissance == $arraylight){
                         $select = "selected";
                         }
@@ -174,6 +187,7 @@ $error = false;
             </div>
 
             <?php
+            // Affiche un boutton en fonction de l'état édition ou insertion
                 if(isset($_GET['id']) && isset($_GET['edit'])){
                     $texteButton = "Modifier";
                 }else{
@@ -181,10 +195,12 @@ $error = false;
                 }
             ?>
 
+            <!-- Input de validation du formulaire --> 
             <div class="uk-margin">
                 <button class="uk-button uk-button-default uk-margin-auto-left uk-margin-auto-right" type="submit"><?=$texteButton ?></button>
             </div>
 
+            <!-- Si on est en état d'édition, cache les valeurs d'edit et id, qui peuvent quand me^me être exploitées--> 
             <?php 
                 if( isset($_GET['id']) && isset($_GET['edit'])){
             ?>

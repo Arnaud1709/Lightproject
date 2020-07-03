@@ -15,6 +15,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="icon" type="image/png" href="getsupercustomizedimage.png" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?=$titre?></title>  
@@ -91,9 +92,16 @@
                 echo'</tbody>';
             }
         }else{
-            /* Si elle est pleine, on compare les valeurs selectionnées et la valeur recherchée*/
+            /* Si elle est pleine, on compare les valeurs selectionnées et la valeur recherchée
             foreach( $datas as $data){
-                if(($data['id'] == $_POST['rechercher']) || ($data['date_changement'] == $_POST['rechercher']) || $data['etage'] == $_POST['rechercher'] || $data['position'] == $_POST['rechercher'] || $data['puissance'] == $_POST['rechercher'] || $data['marque'] == $_POST['rechercher']){
+                // Pour une recherche précise
+                if(($data['id'] == $_POST['rechercher']) || ($data['date_changement'] == $_POST['rechercher']) || $data['etage'] == $_POST['rechercher'] || $data['position'] == $_POST['rechercher'] || $data['puissance'] == $_POST['rechercher'] || $data['marque'] == $_POST['rechercher']){*/
+                    // Pour ne pas prendre en compte les majuscules
+                    $sql = "SELECT id, date_changement, etage, position, puissance, marque FROM ampoule WHERE date_changement LIKE :rechercher OR etage LIKE :rechercher OR position LIKE :rechercher OR puissance LIKE :rechercher OR marque LIKE :rechercher ";
+                    $sth = $dbh->prepare($sql);
+                    $sth->bindValue(':rechercher', '%' . $_POST['rechercher'] . '%', PDO::PARAM_STR);
+                    $sth->execute();
+                    while($data = $sth->fetch(PDO::FETCH_ASSOC)){
                     echo'<tbody>';
                         echo'<td>'.$data['id'].'</td>';
                         echo'<td>'.$intlDateFormatter->format(strtotime($data['date_changement'])).'</td>';
@@ -106,7 +114,7 @@
                     $test = 0;
                 }
             }
-        }
+        //}
             ?>
         </table>
         <?php        
@@ -117,7 +125,7 @@
         ?> 
         <!-- Modal de supression de ligne-->
         <div id="modal" uk-modal>
-            <div class="uk-modal-dialog uk-modal-body uk-text-center">
+            <div class="uk-modal-dialog uk-modal-body uk-text-center uk-margin-auto-vertical">
                 <h1 class="warning">Suppression</h1>
                 <p>Êtes-vous sur de vouloir supprimer cette ligne?</p>
                 <p class="uk-text-center">

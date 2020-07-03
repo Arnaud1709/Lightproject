@@ -18,7 +18,7 @@
                         ?>
                     </span>
                     <?php 
-                    echo '<a title="Au revoir'.$_SESSION['utilisateur'].'!" uk-icon="sign-out" class="delet" uk-toggle="target: #deco" href="deconnexion.php"></a>'
+                    echo '<a title="Au revoir '.$_SESSION['utilisateur'].'!" uk-icon="sign-out" class="delet" uk-toggle="target: #deco" href="deconnexion.php"></a>'
 
                     ?>
                 </p>
@@ -27,7 +27,7 @@
     </header>
     <!-- Modal de déconnexion-->
     <div id="deco" uk-modal >
-        <div class="uk-modal-dialog uk-modal-body uk-text-center">
+        <div class="uk-modal-dialog uk-modal-body uk-text-center uk-margin-auto-vertical">
             <h1 class="warning">Déconnexion</h1>
             <p>Êtes-vous sur de vouloir vous déconnecter?</p>
             <p class="uk-text-center">

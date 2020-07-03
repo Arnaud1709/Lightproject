@@ -30,7 +30,7 @@ body{
 
 .user{
     display: flex;
-    width: 20%;
+    width: 25%;
     flex-direction: row;
     vertical-align: middle;
 }
@@ -131,6 +131,8 @@ h1.idea{
     margin-bottom: 0;
     text-align: center;
     height: 10vh;
+    width: 30%;
+    margin: auto;
 }
 
 .uk-button{
