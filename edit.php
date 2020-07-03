@@ -198,6 +198,12 @@ $error = false;
             <!-- Input de validation du formulaire --> 
             <div class="uk-margin">
                 <button class="uk-button uk-button-default uk-margin-auto-left uk-margin-auto-right" type="submit"><?=$texteButton ?></button>
+                <?php 
+                // Boutton de retour si on a accidentellement cliqué sur l'ajout
+                if( !isset($_GET['id']) && !isset($_GET['edit'])){?>
+                    <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-auto-right" type="submit" href="index.php"> Retour </a>
+                
+                <?php } ?>
             </div>
 
             <!-- Si on est en état d'édition, cache les valeurs d'edit et id, qui peuvent quand me^me être exploitées--> 
