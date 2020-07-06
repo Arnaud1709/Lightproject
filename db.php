@@ -1,5 +1,5 @@
 <?php
-// Identifiants de connexion à la databse wamp
+//Identifiants de connexion à la databse wamp
 define('DATABASE', 'lightproject');
 define('USER', 'root');
 define('PWD', '');

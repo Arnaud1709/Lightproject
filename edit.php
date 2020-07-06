@@ -11,7 +11,7 @@
     if( isset($_GET['id']) && isset($_GET['edit'])){
             $titre='Modifier des informations';
         }else{
-            $titre='Ajouter un changement';
+            $titre='Ajouter une ampoule';
         }
 
     ?>
@@ -125,12 +125,21 @@ $error = false;
 <body>
 <!-- On intègre le header -->   
 <?php require_once('header.php'); ?>
+
+<div>
+ <!-- retour à l'index -->
+ <div class="retour uk-margin uk-background-muted">    
+    <a class="fleche" title="Revenir à l'index" type="submit" href="index.php">
+        <i uk-icon="reply" class=""></i>
+    </a>   
+ </div>
+</div>
     <!-- Création du formulaire --> 
     <div>
-        <form action="" method="post" class="uk-form-horizontal uk-margin-auto-left uk-margin-auto-right uk-margin-xlarge-top uk-width-1-2 uk-margin">
+        <form action="" method="post" class="uk-form-horizontal uk-margin-auto-left uk-margin-auto-top uk-margin-auto-right uk-width-1-2 uk-margin">
             <!-- Entrée de date --> 
-            <div>
-                <input type="date" name="date" placeholder="Date du changement" value="<?=$date; ?>" class="uk-input">
+            <div class="uk-container-small">
+                <input type="date" name="date" placeholder="Date du changement" value="<?=$date; ?>" class="uk-input" required>
             </div>
             <!-- Selection de l'étage--> 
             <div>
@@ -183,7 +192,7 @@ $error = false;
                 ?>            
             </div>
             <div>
-                <input type="text" name="marque" placeholder="Marque" value="<?=$marque?>" class="uk-input">
+                <input type="text" name="marque" placeholder="Marque" value="<?=$marque?>" class="uk-input" required>
             </div>
 
             <?php
@@ -197,13 +206,8 @@ $error = false;
 
             <!-- Input de validation du formulaire --> 
             <div class="uk-margin">
-                <button class="uk-button uk-button-default uk-margin-auto-left uk-margin-auto-right" type="submit"><?=$texteButton ?></button>
-                <?php 
-                // Boutton de retour si on a accidentellement cliqué sur l'ajout
-                if( !isset($_GET['id']) && !isset($_GET['edit'])){?>
-                    <a class="uk-button uk-button-default uk-margin-auto-left uk-margin-auto-right" type="submit" href="index.php"> Retour </a>
+                <button class="uk-button uk-margin-auto-left uk-margin-auto-right" type="submit"><?=$texteButton ?></button>
                 
-                <?php } ?>
             </div>
 
             <!-- Si on est en état d'édition, cache les valeurs d'edit et id, qui peuvent quand me^me être exploitées--> 

@@ -7,7 +7,7 @@
         header('Location: login.php');
     }    
 //Variable du titre de la page créée
-    $titre='Index';
+    $titre='';
 
     ?>
 	
@@ -32,24 +32,29 @@
 <body>
 <!-- Ouvertue d'une section englobant l'intérieur du body -->
     <section>
-        <div class="nav uk-background-muted">
-            <div>
-                <!-- Fromulaire de recherche dans la base de donnée-->
-                <form action="" method="post" class="uk-search">
-                    <div class="uk-flex-row">
-                        <input class="uk-search-input uk-search-default" name="rechercher" type="text" class="search-query" placeholder="Chercher une ampoule">
-                        <button type="submit" class=""><i uk-icon="search"></i></button>
-                    </div>
-                </form>
+        <div class="navig">
+            <div class="nav uk-background-muted">
+                <div class="uk-margin">
+                    <!-- Fromulaire de recherche dans la base de donnée-->
+                    <form action="" method="post" class="uk-search uk-search-default search">
+                        
+                            <input class="uk-search-input" name="rechercher" type="text" class="search" placeholder="Chercher une ampoule">
+                            <button type="submit" uk-search-icon class="uk-search-icon-flip"></button>
+                        
+                    </form>
+                </div>  
+                                    
+                <!-- Lien de retour vers l'index-->
+                <a href="index.php" title="Revenir à l'index" class="uk-link-reset">
+                    <i uk-icon="refresh"></i>
+                </a>           
             </div>
-            <!-- Lien vers l'ajout d'une ampoule -->
-            <a href="edit.php" title="Ajouter une ampoule" class="uk-link-reset">
-                <i uk-icon="push"></i>
-            </a>
-            <!-- Lien de retour vers l'index-->
-            <a href="index.php" title="Revenir à l'index" class="uk-link-reset">
-                <i uk-icon="refresh"></i>
-            </a>
+            <div class="ajout">
+                <!-- Lien vers l'ajout d'une ampoule -->
+                <a href="edit.php" title="Ajouter une ampoule" type="submit" class="add uk-link-reset">
+                    <i uk-icon="plus" class="plus"></i>
+                </a>       
+            </div>
         </div>
 
         <!-- Création du tableau -->
@@ -134,7 +139,14 @@
                 </p>
             </div>
         </div>
-
+        </section>
+        <section class="pied">
+            <div class="ajout">
+                <!-- Lien vers l'ajout d'une ampoule -->
+                <a href="edit.php" title="Ajouter une ampoule" type="submit" class="add uk-link-reset">
+                    <i uk-icon="plus" class="plus"></i>
+                </a>       
+            </div>
         </section>
     <!-- Lien vers le script-->
     <script src="script.js"></script>

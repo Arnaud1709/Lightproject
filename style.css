@@ -18,10 +18,12 @@ body{
 
  .page{
     margin: auto;
+    display: flex;
+    justify-content: center;
  }
 
  h1.localisation{
-    font-family: 'Fontdiner Swanky', cursive;
+    /*font-family: 'Fontdiner Swanky', cursive;*/
     font-size: 42px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -41,16 +43,63 @@ body{
     font-weight: bold;
 }
 
+.navig{
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
 .nav{
     display: flex;
     flex-direction: row;
-    width: 25%;
+    width: 20%;
     justify-content: space-between;
     margin-left: 10%;
     height: 5vh;
     border-radius: 30px;
     padding: 1vw;
-    padding-top: 1vh;
+}
+
+.ajout{
+    display: flex;
+    flex-direction: row;
+    width: 8vh;
+    justify-content: space-between;
+    margin-right: 10%;
+    height: 8vh;
+    border-radius: 50px;
+    padding: 0;
+    background-color: #666;
+    box-shadow: 2px 2px 8px rgba(210, 210, 210, 0.8);
+    border-style: solid;
+    border-color: #666;
+    border-width: 1px;
+}
+
+/*.add{
+    display: flex;
+    flex-direction: row;
+    width: 4vh;
+    justify-content: space-between;
+    margin-right: 10%;
+    height: 4vh;
+    border-radius: 50px;
+    padding: 1vw;
+    border-style: solid;
+    border-color: #666;
+    border-width: 1px;
+    background-color: #666;
+    box-shadow: 2px 2px 8px rgba(210, 210, 210, 0.8);
+}*/
+
+.ajout:hover{
+    background-color: #C7C7C7;
+}
+
+.add svg{
+    height: 35px;
+    width: 35px;
+    color: white;
 }
 
 h1.idea{
@@ -70,10 +119,48 @@ h1.idea{
     padding-bottom: 10px;
 }
 
-.ajout{
-    margin-left: 12.5%;
+.search{
+    Width: 15vw;
 }
 
+.ajout{
+    font-size: 20px;
+}
+
+.retour{
+    display: flex;
+    flex-direction: row;
+    width: 7vh;
+    justify-content: space-between;
+    margin-left: 25%;
+    height: 5vh;
+    border-radius: 50px;
+    padding: 0;
+    background-color: #666;
+    box-shadow: 2px 2px 8px rgba(210, 210, 210, 0.8);
+} 
+
+.retour:hover{
+    background-color: #C7C7C7;
+}
+
+.retour svg{
+    width: 30px;
+    height: 30px;
+    color: white;
+    margin: auto;
+}
+
+.fleche{
+    margin: auto;
+}
+
+.pied{
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 3vh;
+}
 
 .warning{
     color: red;
@@ -90,10 +177,10 @@ h1.idea{
     font-weight: bold;
 }
 
-.uk-search{
+/*.uk-search{
     flex-direction: row;
     padding: 1.5vh;
-}
+}*/
 
 .uk-link-reset{
     padding: 1.5vh;
@@ -136,8 +223,16 @@ h1.idea{
 }
 
 .uk-button{
-    box-shadow: 2px 2px 2px #D2D2D2;
-    background-color: white;
+    box-shadow: 2px 2px 8px rgba(210, 210, 210, 0.8);
+    background-color: #666;
+    color: white;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.uk-button:hover{
+    background-color: #C7C7C7;
 }
 
 .uk-button-default{
@@ -150,4 +245,10 @@ h1.idea{
 
  .uk-input{
      margin-bottom: 1%;
+ }
+
+ .uk-link-reset{
+     padding: 0;
+     margin: auto;
+     margin-bottom: auto;
  }

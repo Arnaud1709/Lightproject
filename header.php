@@ -5,10 +5,7 @@
                 <img class="logo" src="getsupercustomizedimage.png">
                 GOOD IDEA
             </h1>
-            <!-- Nom de la page-->
-            <div class="page">
-                <h1 class="localisation"><?= $titre?></h1>
-            </div>
+            
             <!--Salutation personnalisé et déconnexion-->
             <nav class="user">
                 <p class="session">
@@ -24,6 +21,11 @@
                 </p>
             </nav>
         </div>
+
+        <!-- Nom de la page-->
+        <div class="page">
+                <h1 class="localisation"><?= $titre?></h1>
+            </div>
     </header>
     <!-- Modal de déconnexion-->
     <div id="deco" uk-modal >
