@@ -1,4 +1,11 @@
  <?php
+ //Ouverture de session et vérification de l'utilisateur
+ session_start();
+ require_once('db.php');
+ 
+ if(empty($_SESSION['utilisateur'])){
+     header('Location: login.php');
+ }    
     require_once('db.php');
 // Vérifie si il peut récupérer un id
     if (isset( $_GET['id'])){

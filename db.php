@@ -1,15 +1,15 @@
 <?php
 //Identifiants de connexion à la databse wamp
-define('DATABASE', 'lightproject');
+/*define('DATABASE', 'lightproject');
 define('USER', 'root');
 define('PWD', '');
-define('HOST', 'localhost');
+define('HOST', 'localhost');*/
 
 // Identifiants de connexion au serveur ACS
-/*define('DATABASE', 'arnaudd452_lightproject');
+define('DATABASE', 'arnaudd452_lightproject');
 define('USER', 'arnaudd452');
 define('PWD', 'nGPn9aQAqQfgpA==');
-define('HOST', 'localhost');*/
+define('HOST', 'localhost');
 
 //requête sql de connexion
     try{
