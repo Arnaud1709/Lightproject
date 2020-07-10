@@ -205,8 +205,8 @@ $error = false;
             ?>
 
             <!-- Input de validation du formulaire --> 
-            <div class="uk-margin">
-                <button class="uk-button uk-margin-auto-left uk-margin-auto-right" type="submit"><?=$texteButton ?></button>
+            <div class="bar">
+                <button class="uk-button uk-margin-auto-left uk-margin-auto-right bar" type="submit"><?=$texteButton ?></button>
                 
             </div>
 

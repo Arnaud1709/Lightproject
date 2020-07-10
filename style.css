@@ -8,7 +8,7 @@ body{
     display: flex;
     background-color: white;
     border-radius: 0px 0px 0px 30px;
-    font-size: 16px;
+    font-size: 12px;
     flex-direction: row;
     justify-content: space-between;
     vertical-align: middle;
@@ -105,13 +105,14 @@ body{
 h1.idea{
     background-color: orange;
     border-radius: 0px 0px 0px 30px;
-    width: 25%;
+    width: 30vh;
     font-family: 'Fontdiner Swanky', cursive;
     text-shadow: 0px 0px 12px yellow;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-block-end: 0;
+    font-size: 2rem;
 }
 
 .logo{
@@ -155,6 +156,11 @@ h1.idea{
     margin: auto;
 }
 
+.bar{
+    margin: auto;
+    text-align: center;
+}
+
 .pied{
     width: auto;
     display: flex;
@@ -162,20 +168,7 @@ h1.idea{
     margin-top: 3vh;
 }
 
-.warning{
-    color: red;
-    font-weight: bold;
-}
 
-.yes{
-    color: #30DB41;
-    font-weight: bold;
-}
-
-.nope{
-    color: red;
-    font-weight: bold;
-}
 
 /*.uk-search{
     flex-direction: row;
@@ -227,12 +220,28 @@ h1.idea{
     background-color: #666;
     color: white;
     width: 60%;
-    display: flex;
-    justify-content: center;
+    
 }
 
 .uk-button:hover{
     background-color: #C7C7C7;
+}
+
+.warning{
+    color: red;
+    font-weight: bold;
+}
+
+.yes{
+    color: #30DB41;
+    font-weight: bold;
+    width: 30%;
+}
+
+.nope{
+    color: red;
+    font-weight: bold;
+    width: 30%;
 }
 
 .uk-button-default{
@@ -244,7 +253,11 @@ h1.idea{
 }
 
  .uk-input{
-     margin-bottom: 1%;
+     margin-bottom: 2%;
+ }
+
+ .uk-select{
+     margin-bottom: 2%;
  }
 
  .uk-link-reset{

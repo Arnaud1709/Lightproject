@@ -81,7 +81,9 @@
             <label><b>Mot de passe</b></label>
             <input type="password" placeholder="Entrer le mot de passe" name="mot_de_passe" required class="uk-input">
             <!-- Boutton de validation du formulaire -->
-            <input type="submit" id='submit' value='connexion' name='connexion' class="uk-button uk-button-default" >
+            <div class="bar">
+                <input type="submit" id='submit' value='connexion' name='connexion' class="uk-button" >
+            </div>
         </form>
     </div>
     

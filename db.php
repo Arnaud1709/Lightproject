@@ -6,7 +6,7 @@ define('PWD', '');
 define('HOST', 'localhost');
 
 // Identifiants de connexion au serveur ACS
-/*define('DATABASE', 'arnaudd452_lightproject ');
+/*define('DATABASE', 'arnaudd452_lightproject');
 define('USER', 'arnaudd452');
 define('PWD', 'nGPn9aQAqQfgpA==');
 define('HOST', 'localhost');*/

@@ -38,7 +38,7 @@
                     <!-- Fromulaire de recherche dans la base de donnée-->
                     <form action="" method="post" class="uk-search uk-search-default search">
                         
-                            <input class="uk-search-input" name="rechercher" type="text" class="search" placeholder="Chercher une ampoule">
+                            <input class="uk-search-input" name="rechercher" type="text" class="search" placeholder="Rechercher...">
                             <button type="submit" uk-search-icon class="uk-search-icon-flip"></button>
                         
                     </form>
@@ -134,8 +134,8 @@
                 <h1 class="warning">Suppression</h1>
                 <p>Êtes-vous sur de vouloir supprimer cette ligne?</p>
                 <p class="uk-text-center">
-                    <button class="uk-button uk-button-default yes" id="confirmation" onclick="trash()" type="button" href="delete.php">Oui</button>
-                    <button class="uk-button uk-button-default uk-modal-close nope" type="button">Non</button>
+                    <button class="uk-button yes" id="confirmation" onclick="trash()" type="button" href="delete.php">Oui</button>
+                    <button class="uk-button uk-modal-close nope" type="button">Non</button>
                 </p>
             </div>
         </div>

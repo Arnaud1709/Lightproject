@@ -33,8 +33,8 @@
             <h1 class="warning">Déconnexion</h1>
             <p>Êtes-vous sur de vouloir vous déconnecter?</p>
             <p class="uk-text-center">
-                <button class="uk-button uk-button-default yes" id="validation" onclick="deco()" type="button" href="deconnexion.php">Oui</button>
-                <button class="uk-button uk-button-default uk-modal-close nope" type="button">Non</button>
+                <button class="uk-button yes" id="validation" onclick="deco()" type="button" href="deconnexion.php">Oui</button>
+                <button class="uk-button uk-modal-close nope" type="button">Non</button>
             </p>
          </div>
     </div>
