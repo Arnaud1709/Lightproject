@@ -11,7 +11,7 @@
 
         $sql='SELECT utilisateur, mot_de_passe FROM membre WHERE utilisateur=:utilisateur';
         $sth = $dbh->prepare($sql);
-        $sth->bindValue(':utilisateur', $_POST['utilisateur'], PDO::PARAM_STR);
+        $sth->bindParam(':utilisateur', $_POST['utilisateur'], PDO::PARAM_STR);
         $sth->execute();
         $data = $sth->fetch();
     //Insertions des identifiants extraits dans les variables
@@ -60,10 +60,6 @@
                 <img class="logo" src="getsupercustomizedimage.png">
                 GOOD IDEA
             </h1>
-
-            <div class="page">
-                <h1 class="localisation">Connexion</h1>
-            </div>
 
             <nav class="user">
                 <!-- Nav vide pour centrer le titre-->
